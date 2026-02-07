@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Expt36
+public class LargestNumber
 {
     public static void main(String args[])
     {
