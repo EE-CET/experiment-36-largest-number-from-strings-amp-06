@@ -1,14 +1,52 @@
-import java.util.Scanner;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
-public class LargestNumber {
-   
-        // TODO: Read N
-        // TODO: Read N strings into an array
-        // TODO: Sort the strings using a custom comparator
-        // Comparator logic: (str1, str2) -> (str2 + str1).compareTo(str1 + str2)
-        // TODO: Handle edge case where all numbers are "0" (e.g. input 0 0 -> output "0")
-        // TODO: Concatenate sorted strings and print
+public class LargestNumber
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the number of strings");
+        int N = sc.nextInt();
+        sc.nextLine();
+
+        System.out.println("Enter the strings");
+        String str[] = new String[N];
+        int arr[] = new int[N];
+
+        for(int i=0;i<N;i++)
+        {
+            str[i] = sc.next();
+            arr[i] = Integer.parseInt(str[i]);
+        }
+
     
+        for(int i=0;i<N-1;i++)
+        {
+            for(int j=0;j<N-i-1;j++)
+            {
+                int a = arr[j];
+                int b = arr[j+1];
+
+                int ab = Integer.parseInt("" + a + b);
+                int ba = Integer.parseInt("" + b + a);
+
+                if(ba > ab)
+                {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+
+        
+        String result = "";
+        for(int i=0;i<N;i++)
+        {
+            result += arr[i];
+        }
+
+        System.out.println(result);
+    }
 }
